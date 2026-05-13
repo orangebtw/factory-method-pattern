@@ -1,3 +1,13 @@
+# Паттерн проектирования "Factory Method" (Фабричный метод)
+
+`Factory Method` - это пораждающий паттерн проектирования, который определяет интерфейс для создания объектов некоторого класса, но непосредственное решение о том, объект какого класса создавать происходит в подклассах. То есть паттерн предполагает, что базовый класс делегирует создание объектов классам-наследникам.
+
+## Пример
+
+> [!NOTE]
+> Для работы примера требуется установить библиотеку pygame. Это можно сделать выполнив команду `pip install pygame`
+
+```python
 import pygame
 import sys
 from abc import ABC, abstractmethod
@@ -144,7 +154,8 @@ class DodgerEngine(GameEngine):
 
 
 if __name__ == "__main__":
-    engine = SnakeEngine()
-    # engine = DodgerEngine()
+    # engine = SnakeEngine()
+    engine = DodgerEngine()
 
     engine.run()
+```
