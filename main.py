@@ -113,8 +113,8 @@ class GameEngine(ABC):
         self.game = self.create_game(screen_size)
 
     @abstractmethod
-    def create_game(self, screen_size) -> Game:
-        pass
+    def create_game(self, screen_size) -> Game | None:
+        return None
 
     def run(self):
         while True:
@@ -124,10 +124,11 @@ class GameEngine(ABC):
                     sys.exit()
 
             self.screen.fill((30, 30, 30))
-
-            self.game.handle_events()
-            self.game.update()
-            self.game.draw(self.screen)
+            
+            if self.game is not None:
+                self.game.handle_events()
+                self.game.update()
+                self.game.draw(self.screen)
 
             pygame.display.flip()
             self.clock.tick(10)
